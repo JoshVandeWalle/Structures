@@ -177,6 +177,8 @@ public class ST<Key extends Comparable<Key>, Value> {
 	public Key ceiling(Key key) {
 		if (key == null) 
 			throw new IllegalArgumentException("key is null");
+	        if (rank(key) >= N)
+                    return null;
 		int i = rank(key);
 		return keys[i];
 	}
