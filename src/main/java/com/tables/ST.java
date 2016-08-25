@@ -164,10 +164,14 @@ public class ST<Key extends Comparable<Key>, Value> {
 	public Key floor(Key key) {
 		if (key == null) 
 			throw new IllegalArgumentException("key is null");
-		int i = rank(key);
-		if (i == 0)
-		   return keys[i];
-		return keys[--i];
+		if (key.compareTo(keys[0]) < 0)
+                    return null;
+                else if (key.compareTo(keys[N - 1]) > 0)
+                    return keys[N - 1];
+                else if (key.compareTo(keys[rank(key)]) == 0)
+                    return keys[rank(key)];
+                else  
+                    return keys[(rank(key)) - 1];
 	}
 	
 	public Key ceiling(Key key) {
