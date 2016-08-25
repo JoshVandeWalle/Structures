@@ -165,6 +165,8 @@ public class ST<Key extends Comparable<Key>, Value> {
 		if (key == null) 
 			throw new IllegalArgumentException("key is null");
 		int i = rank(key);
+		if (i == 0)
+		   return keys[i];
 		return keys[--i];
 	}
 	
